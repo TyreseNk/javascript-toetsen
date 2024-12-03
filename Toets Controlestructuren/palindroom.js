@@ -1,22 +1,22 @@
 const prompt = require("prompt-sync")();
-let tekst = prompt("Geef een tekst in. ");
-let tekstlower = tekst.toLowerCase();
-tekstlower=tekstlower.replace(".","");
-tekstlower=tekstlower.replace(",","");
 
-let vergelijking="";
-let omgekeerdetekst="";
-for(let i = 0;i<tekstlower.length;i++ ){
-    if(tekstlower[i]==" "){       
-        vergelijking+="";
-    }else{
-        vergelijking+=tekstlower[i];
-    }
+const input = prompt("Geef een tekst in: ");
+let tekst;
+tekst = input.toLowerCase();
+tekst = tekst.replace(" ", "");
+tekst = tekst.replace(".", "");
+tekst = tekst.replace(",", "");
+
+console.log(tekst);
+
+let omgekeerd = "";
+
+for (let i = tekst.length - 1; i >= 0; i--) {
+    omgekeerd += tekst[i];
 }
-for(let i=tekst.length-1;i>=0;i--){
-    omgekeerdetekst+=vergelijking[i];
-}
-console.log(omgekeerdetekst);
-if(omgekeerdetekst==vergelijking){
+
+if (omgekeerd == tekst) {
     console.log(`${tekst} is een palindroom.`);
+} else {
+    console.log(`${tekst} is geen palindroom.`);
 }

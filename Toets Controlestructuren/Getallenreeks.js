@@ -1,32 +1,45 @@
 const prompt = require("prompt-sync")();
-let som = 0;
-let teller = 0;
-let getal = Number(prompt("Geef een getal in. "));
-let max = getal;
-let min = getal;
-if(getal<0){
-   console.log("Je heb geen positieve getallen ingegeven")
-}else{
-    while(getal>=0){
-        teller++
-        som+=getal;
-        if(getal>max){
-            max=getal;
-        }
-        if(getal<min){
-            min=getal;
-        }
-        getal = Number(prompt("Geef een getal in. "));
-        if(getal != typeof Number ){
-            getal = Number(prompt("dat was geen getal.Probeer opnieuw:"));
-        }
-    }
-    let gemiddelde=som/teller;
-    console.log(som);
-    console.log(max);
-    console.log(min);
-    console.log(gemiddelde);
+
+let counter = 0;
+let sum = 0
+let number;
+let max, min, avg;
+
+
+number = Number(prompt("Enter a positive number (negative to abort): "));
+while (isNaN(number)) {
+    number = Number(prompt("That was not a number. Try again: "));
 }
-    
 
+max = number;
+min = number;
 
+while (number >= 0){
+    sum += number;
+    counter++;
+
+    if (number > max) {
+        max = number;
+    }
+
+    if (number < min) {
+        min = number;
+    }
+
+    number = Number(prompt("Enter a positive number (negative to abort): "));
+    while (isNaN(number)) {
+        number = Number(prompt("That was not a number. Try again: "));
+    }
+} 
+
+if (counter != 0) {
+    avg = sum / counter;
+
+    console.log();
+    console.log("Sum: " + sum);
+    console.log("Average: " + avg);
+    console.log("Min: " + min);
+    console.log("Max: " + max);
+} else {
+    console.log("Je hebt geen geldige getallen ingegeven.");
+}
